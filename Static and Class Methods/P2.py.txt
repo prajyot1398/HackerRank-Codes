@@ -1,0 +1,29 @@
+import os
+import sys
+
+#Add Circle class implementation here
+class Circle:
+    n = 0
+    def __init__(self,radius):
+        super().__init__()
+        self.radius = radius
+        Circle.n += 1
+        
+    @classmethod
+    def getCircleCount(self):
+        return Circle.n     
+    
+    def area(self):
+        return round(self.radius*self.radius*3.14,2)
+        
+'''Check the Tail section for input/output'''
+
+if __name__ == "__main__":
+    with open(os.environ['OUTPUT_PATH'], 'w') as fout:
+        res_lst = list()
+        circcount = list()
+        lst = list(map(lambda x: float(x.strip()), input().split(',')))
+        for radi in lst:
+            c=Circle(radi)
+            res_lst.append(str(c.getCircleCount())+" : "+str(c.area()))
+        fout.write("{}\n{}".format(str(res_lst), str(Circle.getCircleCount())))
